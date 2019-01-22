@@ -5,7 +5,7 @@
 <div class="container main-container">
 	<div class="row">
 		<h3>Список договоров</h3>
-		<a href="" class="btn btn-success">Добавить договор</a>
+		<a href="{{ route('contract.create') }}" class="btn btn-success">Добавить договор</a>
 
 		<div class="container">
 			<table class="table main-container">
@@ -21,22 +21,30 @@
 					</tr>
 				</thead>
 				<tbody>
+					@if ($contracts)
+					@foreach ($contracts as $contract)
 					<tr>
-						<td>1</td>
-						<td>84651</td>
-						<td>Ульяновск</td>
-						<td>Иван Иванович</td>
-						<td class="tr_hidden">2 кг</td>
-						<td class="tr_hidden">500труб</td>
+						<td>{{ $contract->id }}</td>
+						<td>{{ $contract->number }}</td>
+						<td>{{ $contract->trip->departure->name }}</td>
+						<td>{{ $contract->client->name }} {{ $contract->client->surname }}</td>
+						<td class="tr_hidden">{{ $contract->volume_weight }} кг</td>
+						<td class="tr_hidden">{{ $contract->price }} руб</td>
 						<td>
+							{!! Form::open(['route' => ['contract.destroy', $contract->id], 'method' => 'DELETE']) !!}
 							<a href="{{ route('contract.edit', $contract->id) }}"><i class="glyphicon glyphicon-edit"></i></a>							
 							<button type="submit" class="btn_delete"><i class="glyphicon glyphicon-remove"></i></button>
+							{!! Form::close() !!}
 
 						</td>
 						<td>
+							{!! Form::open(['route' => ['contract.archive', $contract->id], 'method' => 'POST']) !!}
 							<button onclick="return confirm('Архивировать контракт?')">Архивация</button>
+							{!! Form::close() !!}
 						</td>
 					</tr>
+					@endforeach
+					@endif
 				</tbody>
 			</table>
 		</div>

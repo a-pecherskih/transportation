@@ -7,7 +7,7 @@
 @section('content') 
 <div class="container main-container">
 	<div>
-		<a href="" class="btn btn-info"  target="_blank">Перекрестный отчёт</a>
+		<a href="{{ route('report.cross') }}" class="btn btn-info"  target="_blank">Перекрестный отчёт</a>
 		<h3 class="row">Рассчёт комиссионных</h3>
 		<div class="form-search">
 			<label for="month">Выберите месяц: </label>
@@ -27,13 +27,17 @@
 					</tr>
 				</thead>
 				<tbody>
+					@if ($contracts)
+					@foreach ($contracts as $contract)
 					<tr class="contract" data-id="{{ $contract->id }}">
-						<td>1</td>
-						<td>32443</td>
-						<td class="tr_hidden">Иван Иванович</td>
-						<td class="tr_hidden"><span class="price">1000</span> руб</td>
-						<td><span class="commission">100</span> руб</td>
+						<td>{{ $contract->id }}</td>
+						<td>{{ $contract->number }}</td>
+						<td class="tr_hidden">{{ $contract->client->name }} {{ $contract->client->surname }}</td>
+						<td class="tr_hidden"><span class="price">{{ $contract->price }}</span> руб</td>
+						<td><span class="commission">{{ $contract->price/10 }}</span> руб</td>
 					</tr>
+					@endforeach
+					@endif
 					<tr>
 						<td colspan="2" >Итого</td>
 						<td><span id="total_sum"></span></td>
