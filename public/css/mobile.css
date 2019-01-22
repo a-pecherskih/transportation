@@ -1,0 +1,159 @@
+.footer {
+	width: 100%;
+	position: relative;
+	bottom: 0;
+}
+
+.main-container {
+	margin-top: 50px !important;
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+	html, body {
+		min-width: 769px !important;
+		max-width: 1024px !important;
+		width: 50% !important;
+	}
+	.container {
+		width: 90% !important;
+		margin: 0px auto;
+		margin: 0px auto !important;
+		padding: 0px auto !important;
+	}
+
+	.main-container {
+		margin-top: 50px !important;
+	}
+
+	.navbar
+
+	h1 {
+		font-size: 36px;
+	}
+
+	h3 {
+		font-size: 26px;
+	}
+
+	p, li {
+		font-size: 16px;
+	}
+
+	img {
+		width: 100%;
+		height: auto;
+	}
+
+	form, table {
+		width: 70%;
+	}
+
+	.form-search {
+		width: 60%;
+	}
+}
+
+@media (min-width: 320px) and (max-width: 768px) {
+
+	html, body {
+		min-width: 426px !important;
+		max-width: 768px !important;
+		width: 100% !important;
+	}
+	.container {
+		width: 90% !important;
+		margin: 0px auto;
+		margin: 0px auto !important;
+		padding: 0px auto !important;
+	}
+
+	.main-container {
+		margin-top: 50px !important;
+	}
+
+
+	.navbar ul {
+		line-height: 300px;
+	}
+
+	h1 {
+		font-size: 36px;
+	}
+
+	h3 {
+		font-size: 26px;
+	}
+
+	p, li {
+		font-size: 16px;
+	}
+
+	img {
+		width: 100%;
+		height: auto;
+	}
+
+	form, table {
+		width: 50%;
+	}
+
+}
+@media (min-width: 320px) and (max-width: 425px) {
+	{
+		html, body {
+			min-width: 320px !important;
+			max-width: 425px !important;
+			width: 60% !important;
+		}
+
+		.main-container div{
+			margin-top: 60px !important;
+		}
+
+
+		.container {
+			width: 90% !important;
+			margin: 0px auto;
+			margin: 0px auto !important;
+			padding: 0px auto !important;
+		}
+
+		.tr_hidden {
+			display: none !important;
+		}
+
+		*{
+			border: 1px solid blue;
+		}
+
+		.navbar {
+			width: 70% !important;
+		}
+
+
+		.container {
+			width: 425px;
+		}
+
+		h1 {
+			font-size: 22px;
+		}
+
+		h3 {
+			font-size: 14px;
+		}
+
+		p, li {
+			font-size: 12px;
+		}
+
+		img {
+			width: 50px;
+			height: auto;
+
+		}
+
+		table {
+			width: 50%;
+		}
+	}
