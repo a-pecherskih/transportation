@@ -8,7 +8,7 @@
 <div class="container main-container">
 	<div class="row">
 		<h3>Список клиентов</h3>
-		<a href="" class="btn btn-success">Добавить клиента</a>
+		<a href="{{ route('client.create') }}" class="btn btn-success">Добавить клиента</a>
 		<div class="form-search">
 			Поиск клиента:
 			<input type="number" id="search" class="input-medium search-query">
@@ -27,24 +27,21 @@
 					</tr>
 				</thead>
 				<tbody>
+					@if ($clients)
+					@foreach ($clients as $client)
 					<tr class="client" data-id="{{ $client->id }}">
-						<td>Ивано Иванович</td>
-						<td>25254425</td>
-						<td>login1</td>
+						<td>{{ $client->name }} {{ $client->surname }}</td>
+						<td>{{ $client->passport }}</td>
+						<td>{{ $client->login }}</td>
 						<td>
+							{!! Form::open(['route' => ['client.destroy', $client->id], 'method' => 'DELETE']) !!}
 							<a href="{{ route('client.edit', $client->id) }}"><i class="glyphicon glyphicon-edit"></i></a>							
 							<button type="submit" class="btn_delete"><i class="glyphicon glyphicon-remove"></i></button>
+							{!! Form::close() !!}
 						</td>
 					</tr>
-					<tr class="client" data-id="{{ $client->id }}">
-						<td>Семен Семенович</td>
-						<td>32434</td>
-						<td>login2</td>
-						<td>
-							<a href="{{ route('client.edit', $client->id) }}"><i class="glyphicon glyphicon-edit"></i></a>							
-							<button type="submit" class="btn_delete"><i class="glyphicon glyphicon-remove"></i></button>
-						</td>
-					</tr>
+					@endforeach
+					@endif
 				</tbody>
 			</table>
 		</div>

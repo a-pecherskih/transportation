@@ -13,7 +13,9 @@
 			<label for="search_departure">Выбор пункт прибытия:</label>
 			<select id="search_departure" class="input-medium search-query" name="search_departure">
 				<option value="0">Показать все</option>
-				<option value="1">Ульяновск</option>
+				@foreach ($points as $point)
+				<option value="{{ $point->id }}">{{ $point->name }}</option>
+				@endforeach
 			</select>
 		</div>
 		<div class="container">
@@ -29,18 +31,24 @@
 					</tr>
 				</thead>
 				<tbody>
+					@if ($trips)
+					@foreach ($trips as $trip)
 					<tr class="trip" data-departure="{{ $trip->departure->id }}">
-						<td>Ульяновск</td>
-						<td>Казань</td>
-						<td>333 кг</td>
-						<td>20 руб за кг</td>
-						<td>1 ч</td>
+						<td>{{ $trip->arrival->name }}</td>
+						<td>{{ $trip->departure->name }}</td>
+						<td>{{ $trip->coefficient }} кг</td>
+						<td>{{ $trip->price_kg }} руб за кг</td>
+						<td>{{ $trip->lasting }} ч</td>
 						<td>
+							{!! Form::open(['route' => ['trip.destroy', $trip->id], 'method' => 'DELETE']) !!}
 							<a href="{{ route('trip.edit', $trip->id) }}"><i class="glyphicon glyphicon-edit"></i></a>								
 							<button type="submit" class="btn_delete"><i class="glyphicon glyphicon-remove"></i></button>
+							{!! Form::close() !!}
 
 						</td>
 					</tr>
+					@endforeach
+					@endif
 				</tbody>
 			</table>
 		</div>
